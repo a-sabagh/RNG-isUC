@@ -9,11 +9,8 @@ class isuc {
         add_action("template_redirect", array($this, "set_post_view"));
         add_action('add_meta_boxes', array($this, 'metabox_init'));
         add_action('save_post', array($this, 'metabox_save'));
-		add_action("template_redirect",array($this,"test"));
     }
-	function test(){
-		//var_dump($_COOKIE["uc_product_view"]);
-	}
+
     function set_post_view() {
         if (! is_admin()) {
             global $post;
