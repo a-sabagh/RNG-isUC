@@ -28,7 +28,7 @@ if(!function_exists("uc_locate_template")){
 		if (!$template_path)
 			$template_path = "rng-isuc/";
 		if (!$default_path)
-			$default_path = UC_PDU . "templates/";
+			$default_path = PDP . "templates/";
 		$template = locate_template(array($template_path . $template_name, $template_name));
 		if (empty($template))
 			$template = $default_path . $template_name;
@@ -41,7 +41,7 @@ if(!function_exists("uc_locate_template")){
  * get_template
  */
 if(!function_exists("uc_get_template")){
-	function uc_get_template($template_name, $args, $template_path, $default_path) {
+	function uc_get_template($template_name, $args="", $template_path = "", $default_path = "") {
 		if (is_array($args) and isset($args))
 			extract($args);
 		$template_file = uc_locate_template($template_name, $template_path, $default_path);
