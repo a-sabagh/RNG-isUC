@@ -1,0 +1,60 @@
+.uc-post-viewed.ja-pp-style-1 li {
+    display: block;
+    overflow: hidden;
+    padding: 7px 0;
+}
+.uc-post-viewed.ja-pp-style-1 .uc-post-viewed-title {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 0;
+    margin: 0;
+
+}
+.uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail {
+    margin-right: 10px;
+    width: 80px;
+    border: none;
+    height: auto;
+}
+.uc-post-viewed-title-wrapper{
+    width: 75%;
+}
+.uc-post-viewed-thumb-wrapper{
+    width: 25%;
+}
+.uc-post-viewed.ja-pp-style-1 li {
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+}
+.uc-post-viewed.ja-pp-style-1 li a {
+    color: inherit;
+    float: left;
+}
+.uc-post-viewed.ja-pp-style-1 .uc-post-viewed-title-wrapper.block-el {
+    display: block;
+    float: none;
+    width: 100%;
+}
+.uc-post-viewed.ja-pp-style-1 li a:hover {
+    text-decoration: none;
+    box-shadow: none;
+}
+.uc-post-viewed-date{
+    color: #989898;
+    font-size: 14px;
+    display: inline-block;
+}
+
+
+/* body {direction:rtl;} */
+
+body.rtl .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail{
+    margin-left: 10px;
+    margin-right: 0 !important;
+}
+
+body.rtl .uc-post-viewed.ja-pp-style-1 li a{
+    float: right;
+}
+
