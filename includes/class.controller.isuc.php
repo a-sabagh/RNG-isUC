@@ -1,11 +1,13 @@
 <?php
 
 namespace rng\isuc;
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 class isuc {
 
     function __construct() {
-        add_shortcode('isuc_post_viewed', array($this, 'shortcode_post_viewed'));
+        add_shortcode('isuc_posts_viewed', array($this, 'shortcode_posts_viewed'));
         add_action("template_redirect", array($this, "set_post_view"));
         add_action('add_meta_boxes', array($this, 'metabox_init'));
         add_action('save_post', array($this, 'metabox_save'));
@@ -21,7 +23,7 @@ class isuc {
             );
             $is_legal_post_views = $this->is_legal_post_views($args);
             if ($is_legal_post_views and ! current_user_can("edit_posts")) {
-                $cookie_name = 'uc_product_view';
+                $cookie_name = 'uc_posts_viewed';
                 $this->update_post_views($post_id, $cookie_name);
             }
         }
@@ -75,10 +77,10 @@ class isuc {
         setcookie($cookie_name, '', time() - 3600, '/');
     }
 
-    function shortcode_post_viewed() {
+    function shortcode_posts_viewed() {
         ob_start();
         // The Query
-        $product_view = $_COOKIE['uc_product_view'];
+        $product_view = $_COOKIE['uc_posts_viewed'];
         if (isset($product_view) or count($product_view) !== 0) {
             $product_view = unserialize($product_view);
             if (is_array($product_view)) {

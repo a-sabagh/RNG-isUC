@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 if (is_array($posts)) {
     echo '<ul class="rng-isuc">';
     foreach ($posts as $p) :
