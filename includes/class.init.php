@@ -27,6 +27,7 @@ class init {
     }
 
     public function public_enqueue_scripts() {
+        wp_enqueue_style("uc-last-post-viewed",PDU . "assets/css/style.css");
         wp_register_style("uc-last-post-viewed-widget", PDU . "assets/css/last-post-viewed-widget.css");
     }
 

@@ -1,179 +1,30 @@
-
-/* ********************* R E S E T  ********************* */
- *, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td {
-    margin:0;
-    padding:0
-}
-table {
-    border-collapse:collapse;
-    border-spacing:0;
-    padding: 0;
-    margin: 0;
-}
-fieldset, img {
-    border:0
-}
-address, caption, cite, code, dfn, em, strong, th, var {
-    font-style:normal;
-    font-weight:normal
-}
-ol, ul, li {
-    list-style:none
-}
-caption, th {
-    text-align:right;
-}
-q:before, q:after {
-    content:''
-}
-* {
-    outline: none;
-}
-strong {
-    font-weight: bold;
-}
-em {
-    font-style: italic;
-}
-a img {
-    border:none;
-}
-a{
-    text-decoration: none;
-}
 /*******************  G R I D *******************/
-/* .jrow {
+/* .ucrow {
   margin-left: -15px;
   margin-right: -15px;
 } */
-.jrow:before,
-.jrow:after {
-  display: table;
-  content: " ";
+.ucrow:before,
+.ucrow:after {
+    display: table;
+    content: " ";
 }
-.jrow:after {
-  clear: both;
+.ucrow:after {
+    clear: both;
 }
-.jcol-sm-6,
-.jcol-sm-12{
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+.uccol-sm-3{
+    text-align: center;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 @media (min-width: 768px) {
-    .jcol-sm-6,
-    .jcol-sm-12{ 
-        float: right;
+    .uccol-sm-3{ 
+        float: left;
         box-sizing: border-box;
     }
-    .jcol-sm-12{
-        width: 100%;
+    .rtl .uccol-sm-3{ float: right; }
+    .uccol-sm-3{
+        width: 25%;
     }
-    .jcol-sm-6{
-        width: 50%;
-    }
-}
-/*******************  M A I N *******************/
-
-.rng-jobber input[type="text"],
-.rng-jobber textarea ,
-.rng-jobber  select{
-    width: 100%;
-/*    margin: 10px auto;*/
-    border-color: #dcdcdc;
-    color: #666666;
-    padding: 5px 10px;
-    background: #f9f9f9;
-    border: 1px solid #e2e2e2;
-    text-shadow: 0 1px 0 #FFFFFF;
-    height: 35px;
-    box-shadow: none;
-    border-radius: 0;
-}
-.rng-jobber input[type="radio"] {
-    margin: 20px auto;
-}
-.rng-jobber input[type="file"]{
-    width: 100%;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.rng-jobber textarea{height: 150px;}
-.rng-jobber label{
-    cursor: pointer;
-    display: block;
-    vertical-align: middle;
-}
-.rng-jobber fieldset {
-    border: 1px solid #d1d1d1;
-    margin: 0 0 1.75em;
-    min-width: inherit;
-    padding: 0.875em;
-}
-.rng-jobber fieldset h3{
-    color: #00B7C6;
-    border-bottom: 1px solid #cdcdcd;
-    padding: 10px 0;
-    margin: 5px auto;
-}
-.rng-jobber .final-check{
-    display: inline-block;
-    width: 200px !important;
-    margin: 5px 10px !important;
-}
-.rng-jobber button{
-    cursor: pointer;
-}
-.rng-jobber button:visited ,
-.rng-jobber button:active ,
-.rng-jobber button:focus ,
-.rng-jobber button::-moz-focus-inner{
-    outline: 0;
-    border: 0;
-}
-.rng-jobber .btn-add{
-    display: inline-block !important;
-    background: #00B7C6 !important;
-    border: none !important;
-    padding: 5px 10px !important;
-    line-height: 25px !important;
-    border-radius: 5px !important;
-    color: #FFFFFF !important;
-    margin: 15px 0px !important;
-    letter-spacing: normal !important;
-    cursor: pointer !important;
-    font-weight: normal;
-}
-.rng-jobber .btn-remove{
-    background: #FF3D3D !important;
-    border: none !important;
-    border-radius: 5px !important;
-    padding: 5px 10px !important;
-    line-height: 25px !important;
-    color: #FFFFFF !important;
-    margin: 15px 5px !important;
-    letter-spacing: normal !important;
-    font-weight: normal;
-}
-.rng-jobber label{
-    display: block;
-}
-@media screen and (min-width: 768px){
-    .rng-jobber .jobber-other-fields{
-        min-height: 95px !important;
-    }
-}
-.rng-jobber .inline{
-    display: inline-block !important; 
-    font-weight: normal;
-}
-.rng-jobber .clear {
-    display: block;
-    clear: both;
-    width: 100%;
-    height: 1px;
-}
-.jcol-sm-12.jobber-other-fields {
-    margin-bottom: 10px;
 }
