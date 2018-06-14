@@ -1,5 +1,3 @@
-
-
 <?php
 
 class uc_posts_viewed_widget extends WP_Widget {
