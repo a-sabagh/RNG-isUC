@@ -23,7 +23,7 @@ class init {
      * add text domain for translate files
      */
     public function add_text_domain() {
-        load_plugin_textdomain($this->slug, FALSE, UC_PRT . "/languages");
+        load_plugin_textdomain($this->slug, FALSE, PRT . "/languages");
     }
 
     public function public_enqueue_scripts() {
