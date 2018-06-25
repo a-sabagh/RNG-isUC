@@ -14,7 +14,6 @@ class uc_posts_viewed_widget extends WP_Widget {
      * output widget
      */
     public function widget($args, $instance) {
-        wp_enqueue_style("uc-last-post-viewed-widget");
         //$instance = get value from admin panel
         //$args = get structure of widget
         //apply_filters widget_title
@@ -36,7 +35,7 @@ class uc_posts_viewed_widget extends WP_Widget {
         $output .= $args["after_title"];
         ob_start();
         $posts_viewed = $_COOKIE['uc_posts_viewed'];
-        if (isset($posts_viewed) or count($posts_viewed) !== 0) {
+        if (isset($posts_viewed) && count(unserialize($posts_viewed)) !== 0) {
             $posts_viewed = unserialize($posts_viewed);
 
             $query_args = array(

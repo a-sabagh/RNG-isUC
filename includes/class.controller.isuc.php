@@ -11,10 +11,42 @@ class isuc {
     function __construct() {
         add_shortcode('isuc_posts_viewed', array($this, 'shortcode_posts_viewed'));
         add_action("template_redirect", array($this, "set_post_view"));
+        if (self::check_sidenav_postviewed())
+            add_action("wp_footer", array($this,"show_sidenav_postviewed"));
+    }
+
+    public static function check_sidenav_postviewed() {
+        $uc_settings = get_option("uc_settings");
+        $flag = $uc_settings['side_nav'];
+        if (isset($flag) && $flag == 'no') {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    function show_sidenav_postviewed() {
+        ob_start();
+        $posts_viewed = $_COOKIE['uc_posts_viewed'];
+        if (isset($posts_viewed) && count(unserialize($posts_viewed)) !== 0) {
+            $posts_viewed = unserialize($posts_viewed);
+
+            $query_args = array(
+                'order' => 'DESC',
+                'post__in' => $posts_viewed,
+            );
+            $params = array('query_args' => $query_args,'has_posts'=>TRUE);
+            uc_get_template("sidenav-postviewed.php", $params);
+        } else {
+            $params = array('query_args' => '','has_posts' => FALSE);
+            uc_get_template("sidenav-postviewed.php", $params);
+        }
+        $output = ob_get_clean();
+        echo $output;
     }
 
     function set_post_view() {
-        if (!is_admin()) {
+        if (!is_admin() and is_single()) {
             global $post;
             $post_id = $post->ID;
             $post_type = $post->post_type;

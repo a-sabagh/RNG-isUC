@@ -27,8 +27,10 @@ class init {
     }
 
     public function public_enqueue_scripts() {
-        wp_enqueue_style("uc-last-post-viewed",UC_PDU . "assets/css/style.css");
-        wp_register_style("uc-last-post-viewed-widget", UC_PDU . "assets/css/last-post-viewed-widget.css");
+        wp_enqueue_style("uc-last-post-viewed", UC_PDU . "assets/css/style.css");
+        if(isuc::check_sidenav_postviewed()){
+            wp_enqueue_script("uc-last-post-viewed-sidenav", UC_PDU . "assets/js/script.js", array('jquery'), $this->version, TRUE);
+        }
     }
 
     /**
