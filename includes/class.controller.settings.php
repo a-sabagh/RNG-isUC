@@ -30,7 +30,7 @@ class settings {
         register_setting("uc-settings", "uc_settings");
         add_settings_section("uc-settings-top", __("General settings", "rng-isuc"), array($this, "general_settings"), "uc-settings");
         add_settings_field("uc-pv-cookie", __("Set user post viewed", "rng-isuc"), array($this, "general_settings_flag"), "uc-settings", "uc-settings-top", array('id' => 'uc-flag', 'name' => 'flag'));
-        add_settings_field("uc-settings-side-view", __("Show Side Nav post viewed"), array($this, "general_settings_side_nav"), "uc-settings", "uc-settings-top", array("id" => "uc-side-nav", "name" => "side_nav"));
+        add_settings_field("uc-settings-side-view", __("Show Side Nav post viewed","rng-isuc"), array($this, "general_settings_side_nav"), "uc-settings", "uc-settings-top", array("id" => "uc-side-nav", "name" => "side_nav"));
         add_settings_field("uc-settings-legal-pt", __("Permission", "rng-isuc"), array($this, "general_settings_legal_pt"), "uc-settings", "uc-settings-top", array("id" => "uc-legal-pt", "name" => "legal_pt"));
         add_settings_field("uc-settings-post-count", __("Post Count", "rng-isuc"), array($this, "general_settings_post_count"), "uc-settings", "uc-settings-top", array("id" => "uc-post-count", "name" => "post_count"));
     }
