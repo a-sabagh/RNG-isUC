@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-06-26 03:14+0430\n"
+"POT-Creation-Date: 2018-06-26 03:24+0430\n"
 "PO-Revision-Date: 2018-06-14 10:19-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html__\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/settings-panel.php:8
@@ -128,4 +128,16 @@ msgstr ""
 
 #: includes/widgets/last-post-viewed.php:142
 msgid "style2 (with thumbnail)"
+msgstr ""
+
+#: templates/sidenav-postviewed.php:2
+msgid "Recently Viewed"
+msgstr ""
+
+#: templates/sidenav-postviewed.php:3
+msgid "Close"
+msgstr ""
+
+#: templates/sidenav-postviewed.php:44
+msgid "Post Viewed"
 msgstr ""
