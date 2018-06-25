@@ -14,7 +14,7 @@ class settings {
             add_action("admin_init", array($this, "general_settings_init"));
             add_action("admin_notices", array($this, "configure_notices"));
             add_action("admin_init", array($this, "dismiss_configuration"));
-            add_filter('plugin_action_links_' . PRU, array($this, 'add_setting_link'));
+            add_filter('plugin_action_links_' . UC_PRU, array($this, 'add_setting_link'));
         }
     }
 
@@ -23,7 +23,7 @@ class settings {
     }
 
     public function isuc_settings() {
-        include ADM . "settings-panel.php";
+        include UC_ADM . "settings-panel.php";
     }
 
     public function general_settings_init() {
