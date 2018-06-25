@@ -154,7 +154,6 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
     top: 0;
     overflow: hidden;
     overflow-y: auto;
-    direction: ltr;
     z-index: 9998;
     max-width: 80%;
     padding: 70px 50px;
@@ -209,6 +208,10 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
     -o-webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09), 0 4px 20px rgba(0, 0, 0, 0.1);
     border-left: 1px solid #d8d8d8;
     vertical-align: middle;
+}
+.uc-open-sidenav:hover{
+    opacity: 1;
+    text-decoration: none;
 }
 .uc-no-post-viewed{
     text-align: center;
