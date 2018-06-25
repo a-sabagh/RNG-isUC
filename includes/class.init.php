@@ -23,12 +23,12 @@ class init {
      * add text domain for translate files
      */
     public function add_text_domain() {
-        load_plugin_textdomain($this->slug, FALSE, PRT . "/languages");
+        load_plugin_textdomain($this->slug, FALSE, UC_PRT . "/languages");
     }
 
     public function public_enqueue_scripts() {
-        wp_enqueue_style("uc-last-post-viewed",PDU . "assets/css/style.css");
-        wp_register_style("uc-last-post-viewed-widget", PDU . "assets/css/last-post-viewed-widget.css");
+        wp_enqueue_style("uc-last-post-viewed",UC_PDU . "assets/css/style.css");
+        wp_register_style("uc-last-post-viewed-widget", UC_PDU . "assets/css/last-post-viewed-widget.css");
     }
 
     /**
