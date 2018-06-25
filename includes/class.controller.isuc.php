@@ -1,9 +1,11 @@
 <?php
 
 namespace rng\isuc;
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
 }
+
 class isuc {
 
     function __construct() {
@@ -12,7 +14,7 @@ class isuc {
     }
 
     function set_post_view() {
-        if (! is_admin()) {
+        if (!is_admin()) {
             global $post;
             $post_id = $post->ID;
             $post_type = $post->post_type;
@@ -29,19 +31,22 @@ class isuc {
 
     function is_legal_post_views($args) {
         $uc_settings = get_option("uc_settings");
-		$flag = $uc_settings['flag'];
-		$flag = (empty($flag) || $flag == 'yes')? TRUE : FALSE;
-		$legal_pt = $uc_settings['legal_pt'];
-		if(in_array($args['post_type'],$legal_pt) and $flag){
-			return TRUE;
-		}else{
-			return FALSE;
-		}
+        $flag = $uc_settings['flag'];
+        $flag = (!isset($flag) || $flag == 'yes') ? TRUE : FALSE;
+        $legal_pt = $uc_settings['legal_pt'];
+        if (!$legal_pt) {
+            $legal_pt = array("post");
+        }
+        if (in_array($args['post_type'], $legal_pt) and $flag) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
     function update_post_views($post_id, $cookie_name) {
         $product_view = $_COOKIE[$cookie_name];
-        if (isset($product_view) and !empty($product_view)) {
+        if (isset($product_view) and ! empty($product_view)) {
             $product_view = unserialize($product_view);
             if (is_array($product_view) and ! in_array($post_id, $product_view)) {
                 $product_view = $this->check_product_view_count($product_view);
@@ -57,11 +62,11 @@ class isuc {
     }
 
     function check_product_view_count($product_view) {
-		$uc_settings = get_option("uc_settings");
-		$post_count = $uc_settings['post_count'];
-		if(empty($post_count)){
-			$post_count = 10;
-		}
+        $uc_settings = get_option("uc_settings");
+        $post_count = $uc_settings['post_count'];
+        if (empty($post_count)) {
+            $post_count = 10;
+        }
         if (count($product_view) > $post_count) {
             while (count($product_view) > $post_count) {
                 array_pop($product_view);
@@ -91,21 +96,21 @@ class isuc {
             }
         }
         if (isset($product_view) and count($product_view) !== 0) {
-			$uc_settings = get_option("uc_settings");
-			$post_count = $uc_settings['post_count'];
-			$active_post_type = get_option("uc_settings");
-			if ($active_post_type == FALSE) {
-				$active_post_type = array("post");
-			} else {
-				$active_post_type = $active_post_type['legal_pt'];
-			}
-			if(empty($post_count)){
-				$post_count = 10;
-			}
+            $uc_settings = get_option("uc_settings");
+            $post_count = $uc_settings['post_count'];
+            $active_post_type = get_option("uc_settings");
+            if ($active_post_type == FALSE) {
+                $active_post_type = array("post");
+            } else {
+                $active_post_type = $active_post_type['legal_pt'];
+            }
+            if (empty($post_count)) {
+                $post_count = 10;
+            }
             $args = array('post__in' => $product_view, 'post_type' => $active_post_type, 'posts_per_page' => $post_count);
             $posts = get_posts($args);
-			$template_args = array('posts' => $posts);
-			uc_get_template("product-viewed.php",$template_args);
+            $template_args = array('posts' => $posts);
+            uc_get_template("product-viewed.php", $template_args);
         }
         $outpout = ob_get_clean();
         return $outpout;
