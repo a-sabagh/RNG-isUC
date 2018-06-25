@@ -15,13 +15,13 @@ namespace rng\isuc;
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
-define(FILE, __FILE__);
-define(PRU, plugin_basename(__FILE__));
-define(PDU, plugin_dir_url(__FILE__));   //http://localhost:8888/rng-plugin/wp-content/plugins/rng-isuc/
-define(PRT, basename(__DIR__));          //rng-isuc.php
-define(PDP, plugin_dir_path(__FILE__));  //Applications/MAMP/htdocs/rng-plugin/wp-content/plugins/rng-isuc
-define(TMP, PDP . "/public/");           //view OR templates directory for public 
-define(ADM, PDP . "/admin/");            //view OR templates directory for admin panel
+define(UC_FILE, __FILE__);
+define(UC_PRU, plugin_basename(__FILE__));
+define(UC_PDU, plugin_dir_url(__FILE__));   //http://localhost:8888/rng-plugin/wp-content/plugins/rng-isuc/
+define(UC_PRT, basename(__DIR__));          //rng-isuc.php
+define(UC_PDP, plugin_dir_path(__FILE__));  //Applications/MAMP/htdocs/rng-plugin/wp-content/plugins/rng-isuc
+define(UC_TMP, UC_PDP . "/public/");        //view OR templates directory for public 
+define(UC_ADM, UC_PDP . "/admin/");         //view OR templates directory for admin panel
 
 /*
  * locate_template
@@ -32,7 +32,7 @@ if (!function_exists("uc_locate_template")) {
         if (!$template_path)
             $template_path = "rng-isuc/";
         if (!$default_path)
-            $default_path = PDP . "templates/";
+            $default_path = UC_PDP . "templates/";
         $template = locate_template(array($template_path . $template_name, $template_name));
         if (empty($template))
             $template = $default_path . $template_name;
