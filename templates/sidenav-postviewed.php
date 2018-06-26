@@ -20,7 +20,7 @@
                         <a class="uc-post-viewed-title-wrapper <?php echo $block_el; ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                             <p class="uc-post-viewed-title"><?php the_title(); ?></p>
                         </a>
-                        <span class="uc-post-viewed-date"><?php the_date(); ?></span>
+                        <span class="uc-post-viewed-date"><?php echo get_the_date(); ?></span>
                     </li>
                     <?php
                 endwhile;
