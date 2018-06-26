@@ -228,6 +228,12 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
 }
 .uc-close-sidenav {
     float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+body.rtl .uc-close-sidenav{
+    margin-right: 10px;
+    margin-left: 0;
 }
 body.rtl .uc-close-sidenav {
     float: left;
