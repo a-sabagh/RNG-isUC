@@ -2,7 +2,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2018-06-26 03:24+0430\n"
+=======
+"POT-Creation-Date: 2018-06-26 03:16+0430\n"
+>>>>>>> 97b740bea890454a7efdcaf8fa2c3a5a40414d8a
 "PO-Revision-Date: 2018-06-14 10:19-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
