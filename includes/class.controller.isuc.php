@@ -12,7 +12,7 @@ class isuc {
         add_shortcode('isuc_posts_viewed', array($this, 'shortcode_posts_viewed'));
         add_action("template_redirect", array($this, "set_post_view"));
         if (self::check_sidenav_postviewed())
-            add_action("wp_footer", array($this,"show_sidenav_postviewed"));
+            add_action("wp_footer", array($this, "show_sidenav_postviewed"));
     }
 
     public static function check_sidenav_postviewed() {
@@ -30,15 +30,24 @@ class isuc {
         $posts_viewed = $_COOKIE['uc_posts_viewed'];
         if (isset($posts_viewed) && count(unserialize($posts_viewed)) !== 0) {
             $posts_viewed = unserialize($posts_viewed);
-
+            $uc_settings = get_option("uc_settings");
+            $legal_pt = $uc_settings['legal_pt'];
             $query_args = array(
                 'order' => 'DESC',
                 'post__in' => $posts_viewed,
+                'post_type' => $legal_pt,
             );
-            $params = array('query_args' => $query_args,'has_posts'=>TRUE);
+            if (is_single()) {
+                $queried_object = get_queried_object();
+                $current_id =(int) $queried_object->ID;
+                $query_args['post__not_in'] = $current_id;
+                $index = array_search($current_id, $query_args['post__in']);
+                unset($query_args['post__in'][$index]);
+            }
+            $params = array('query_args' => $query_args, 'has_posts' => TRUE);
             uc_get_template("sidenav-postviewed.php", $params);
         } else {
-            $params = array('query_args' => '','has_posts' => FALSE);
+            $params = array('query_args' => '', 'has_posts' => FALSE);
             uc_get_template("sidenav-postviewed.php", $params);
         }
         $output = ob_get_clean();
@@ -151,5 +160,3 @@ class isuc {
 }
 
 new isuc();
-
-

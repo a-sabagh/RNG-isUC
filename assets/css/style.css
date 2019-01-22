@@ -4,6 +4,7 @@
     overflow: hidden;
     padding: 7px 0;
 }
+
 .uc-post-viewed.ja-pp-style-1 .uc-post-viewed-title {
     line-height: 20px;
     font-size: 14px;
@@ -12,6 +13,7 @@
     margin: 0;
 
 }
+
 .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail {
     margin-right: 10px;
     width: 80px;
@@ -21,34 +23,42 @@
     padding-left: 0;
     box-sizing: border-box;
 }
+
 body.rtl .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail {
     padding-left: 5px;
     padding-right: 0;
 }
-.uc-post-viewed-title-wrapper{
+
+.uc-post-viewed-title-wrapper {
     width: 75%;
 }
-.uc-post-viewed-thumb-wrapper{
-    width: 25%;
+
+.uc-post-viewed-thumb-wrapper {
+    width: 85px;
 }
+
 .uc-post-viewed.ja-pp-style-1 li {
     list-style: none;
     border-bottom: 1px solid #ddd;
 }
+
 .uc-post-viewed.ja-pp-style-1 li a {
     color: inherit;
     float: left;
 }
+
 .uc-post-viewed.ja-pp-style-1 .uc-post-viewed-title-wrapper.block-el {
     display: block;
     float: none;
     width: 100%;
 }
+
 .uc-post-viewed.ja-pp-style-1 li a:hover {
     text-decoration: none;
     box-shadow: none;
 }
-.uc-post-viewed-date{
+
+.uc-post-viewed-date {
     color: #989898;
     font-size: 14px;
     display: inline-block;
@@ -57,53 +67,57 @@ body.rtl .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail {
 
 /* body {direction:rtl;} */
 
-body.rtl .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail{
+body.rtl .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail {
     margin-left: 10px;
     margin-right: 0 !important;
 }
 
-body.rtl .uc-post-viewed.ja-pp-style-1 li a{
+body.rtl .uc-post-viewed.ja-pp-style-1 li a {
     float: right;
 }
 
 /***************  I C O N F O N T **************/
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?noiiu');
-  src:  url('fonts/icomoon.eot?noiiu#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?noiiu') format('truetype'),
-    url('fonts/icomoon.woff?noiiu') format('woff'),
-    url('fonts/icomoon.svg?noiiu#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?noiiu');
+    src: url('fonts/icomoon.eot?noiiu#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?noiiu') format('truetype'),
+        url('fonts/icomoon.woff?noiiu') format('woff'),
+        url('fonts/icomoon.svg?noiiu#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-[class^="ucicon-"], [class*=" ucicon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
+[class^="ucicon-"],
+[class*=" ucicon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .ucicon-clock:before {
-  content: "\e94e";
+    content: "\e94e";
 }
+
 .ucicon-spinner3:before {
-  content: "\e97c";
+    content: "\e97c";
 }
+
 .ucicon-eye2:before {
-  content: "\e9ce";
+    content: "\e9ce";
 }
+
 .ucicon-eye-blocked:before {
-  content: "\e9d1";
+    content: "\e9d1";
 }
 
 /****************  G R I D ********************/
@@ -116,28 +130,36 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
     display: table;
     content: " ";
 }
+
 .ucrow:after {
     clear: both;
 }
-.uccol-sm-3{
+
+.uccol-sm-3 {
     text-align: center;
     position: relative;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
 }
+
 @media (min-width: 768px) {
-    .uccol-sm-3{ 
+    .uccol-sm-3 {
         float: left;
         box-sizing: border-box;
     }
-    .rtl .uccol-sm-3{ float: right; }
-    .uccol-sm-3{
+
+    .rtl .uccol-sm-3 {
+        float: right;
+    }
+
+    .uccol-sm-3 {
         width: 25%;
     }
 }
+
 /****************  S I D E N A V ********************/
-.uc-black-window{
+.uc-black-window {
     background: #000;
     cursor: pointer;
     opacity: 0.7;
@@ -147,8 +169,9 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
     top: 0;
     right: 0;
     display: none;
-    z-index: 400;
+    z-index: 4000;
 }
+
 .uc-sidenav {
     position: fixed;
     top: 0;
@@ -163,27 +186,34 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
     min-width: 200px;
     box-sizing: content-box;
 }
+
 .uc-sidenav.open {
-	transition: all 1s;
-	display: block;
-	right: 0;
-	left: auto;
+    transition: all 1s;
+    display: block;
+    right: 0;
+    left: auto;
+    max-width: 400px;
 }
+
 .uc-open-sidenav span {
     display: block;
 }
+
 .uc-sidenav {
     background: #FFF;
     color: #334141;
 }
+
 .uc-sidenav a {
     color: #334141;
 }
+
 .uc-sidenav a.nasa-sidebar-return-shop:hover {
     background-color: #296dc1;
     border-color: #296dc1;
     color: #FFF;
 }
+
 .uc-open-sidenav {
     margin-bottom: 75px;
     display: block;
@@ -209,36 +239,44 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a{
     border-left: 1px solid #d8d8d8;
     vertical-align: middle;
 }
-.uc-open-sidenav:hover{
+
+.uc-open-sidenav:hover {
     opacity: 1;
     text-decoration: none;
 }
-.uc-no-post-viewed{
+
+.uc-no-post-viewed {
     text-align: center;
 }
+
 .uc-no-post-viewed i {
     font-size: 80px;
     display: inline-block;
     color: #bbb;
     margin-top: 25px;
 }
+
 .uc-no-post-viewed p {
     font-size: 20px;
     margin-top: 15px;
 }
+
 .uc-close-sidenav {
     float: right;
     margin-left: 10px;
     margin-right: 0;
 }
-body.rtl .uc-close-sidenav{
+
+body.rtl .uc-close-sidenav {
     margin-right: 10px;
     margin-left: 0;
 }
+
 body.rtl .uc-close-sidenav {
     float: left;
 }
-.uc-sidenav-title{
+
+.uc-sidenav-title {
     display: inline-block;
     font-weight: bold;
 }

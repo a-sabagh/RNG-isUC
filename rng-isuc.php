@@ -23,21 +23,24 @@ define(UC_PDP, plugin_dir_path(__FILE__));  //Applications/MAMP/htdocs/rng-plugi
 define(UC_TMP, UC_PDP . "/public/");        //view OR templates directory for public 
 define(UC_ADM, UC_PDP . "/admin/");         //view OR templates directory for admin panel
 
+
+
+define(PLUGIN_PATH, plugin_dir_path(__FILE__));
 /*
  * locate_template
  */
 if (!function_exists("uc_locate_template")) {
 
-    function uc_locate_template($template_name, $template_path, $default_template) {
-        if (!$template_path)
-            $template_path = "rng-isuc/";
-        if (!$default_path)
-            $default_path = UC_PDP . "templates/";
-        $template = locate_template(array($template_path . $template_name, $template_name));
-        if (empty($template))
-            $template = $default_path . $template_name;
-        return apply_filters("uc_locate_template", $template, $template_name, $template_path, $default_path);
-    }
+function custom_locate_template($template_name, $template_path, $default_template) {
+    if (!$template_path)
+        $template_path = "pluginsName/";
+    if (!$default_path)
+        $default_path = PLUGIN_PATH . "templates/";
+    $template = locate_template(array($template_path . $template_name, $template_name));
+    if (empty($template))
+        $template = $default_path . $template_name;
+    return apply_filters("custom_locate_template", $template, $template_name, $template_path, $default_path);
+}
 
 }
 
@@ -47,16 +50,16 @@ if (!function_exists("uc_locate_template")) {
  */
 if (!function_exists("uc_get_template")) {
 
-    function uc_get_template($template_name, $args = "", $template_path = "", $default_path = "") {
-        if (is_array($args) and isset($args))
-            extract($args);
-        $template_file = uc_locate_template($template_name, $template_path, $default_path);
-        if (!file_exists($template_file)):
-            error_log("File with name of {$template_file} is not exist");
-            return;
-        endif;
-        include $template_file;
-    }
+function custom_get_template($template_name, $args = "", $template_path = "", $default_path = "") {
+    if (is_array($args) and isset($args))
+        extract($args);
+    $template_file = custom_locate_template($template_name, $template_path, $default_path);
+    if (!file_exists($template_file)):
+        error_log("File with name of {$template_file} is not exist");
+        return;
+    endif;
+    include $template_file;
+}
 
 }
 
