@@ -17,75 +17,62 @@ class uc_posts_viewed_widget extends WP_Widget {
         //$instance = get value from admin panel
         //$args = get structure of widget
         //apply_filters widget_title
-        $title = !empty($instance['title']) ? $instance['title'] : "";
-        $title = apply_filters("widget_title", $title);
+        $title = !empty($instance['title']) ? $instance['title'] : esc_html__("Last Posts viewed", "rng-isuc");
+        $title_filtered = apply_filters("widget_title", $title);
         $post_types = (!empty($instance['post_types']) and isset($instance['post_types'])) ? $instance['post_types'] : array('post');
-        $posts_count = (!empty($instance['posts_count'])) ? $instance['posts_count'] : 4;
+        $posts_count = (!empty($instance['posts_count'])) ? (int) $instance['posts_count'] : 4;
         $style = (!empty($instance['style'])) ? $instance['style'] : 0;
-        $active_post_type = get_option("uc_settings");
-        if ($active_post_type == FALSE) {
-            $active_post_type = array("post");
-        } else {
-            $active_post_type = $active_post_type['legal_pt'];
-        }
 
         $output = $args["before_widget"];
         $output .= $args["before_title"];
-        $output .= $title;
+        $output .= $title_filtered;
         $output .= $args["after_title"];
+
         ob_start();
-        $posts_viewed = $_COOKIE['uc_posts_viewed'];
-        if (isset($posts_viewed) && count(unserialize($posts_viewed)) !== 0) {
-            $posts_viewed = unserialize($posts_viewed);
-
-            $query_args = array(
-                'post_type' => $post_types,
-                'posts_per_page' => $posts_count,
-                'order' => 'DESC',
-                'post__in' => $posts_viewed,
-            );
-
-            $query = new WP_Query($query_args);
-            ?>
-            <ul class="uc-post-viewed ja-pp-style-<?php echo $style; ?>">
-                <?php
-                if ($query->have_posts()):
-                    switch ($style):
-                        case '0':
-                            while ($query->have_posts()):
-                                $query->the_post();
-                                ?>
-                                <li>
-                                    <a class="uc-post-viewed-title" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-                                </li>
-                                <?php
-                            endwhile;
-                            break;
-                        case '1':
-                            while ($query->have_posts()):
-                                $query->the_post();
-                                $post_id = get_the_ID();
-                                $img_thumb = get_the_post_thumbnail($post_id, 'thumbnail', array("class" => "papular-posts-widg-thumbnail"));
-                                $block_el = (has_post_thumbnail($post_id)) ? "" : "block-el";
-                                ?>
-                                <li>
-                                    <a class="uc-post-viewed-thumb-wrapper" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo $img_thumb; ?></a>
-                                    <a class="uc-post-viewed-title-wrapper <?php echo $block_el; ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <p class="uc-post-viewed-title"><?php the_title(); ?></p>
-                                    </a>
-                                    <span class="uc-post-viewed-date"><?php the_date(); ?></span>
-                                </li>
-                                <?php
-                            endwhile;
-                            break;
-                    endswitch;
-                endif;
-                ?>
-            </ul>
+        global $rnguc_isuc;
+        $query_args = $rnguc_isuc->get_query_args();
+        $query_args['post_type'] = $post_types;
+        $query_args['posts_per_page'] = $posts_count;
+        $query = new WP_Query($query_args);
+        ?>
+        <ul class="uc-post-viewed ja-pp-style-<?php echo $style; ?>">
             <?php
-        }else {
-            _e("No Post Was Viewed","rng-isuc");
-        }
+            if ($query->have_posts()) {
+                switch ($style):
+                    case '0':
+                        while ($query->have_posts()):
+                            $query->the_post();
+                            ?>
+                            <li>
+                                <a class="uc-post-viewed-title" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                            </li>
+                            <?php
+                        endwhile;
+                        break;
+                    case '1':
+                        while ($query->have_posts()):
+                            $query->the_post();
+                            $post_id = get_the_ID();
+                            $img_thumb = get_the_post_thumbnail($post_id, 'thumbnail', array("class" => "papular-posts-widg-thumbnail"));
+                            $block_el = (has_post_thumbnail($post_id)) ? "" : "block-el";
+                            ?>
+                            <li>
+                                <a class="uc-post-viewed-thumb-wrapper" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo $img_thumb; ?></a>
+                                <a class="uc-post-viewed-title-wrapper <?php echo $block_el; ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                    <p class="uc-post-viewed-title"><?php the_title(); ?></p>
+                                </a>
+                                <span class="uc-post-viewed-date"><?php the_date(); ?></span>
+                            </li>
+                            <?php
+                        endwhile;
+                        break;
+                endswitch;
+            }else {
+                _e("No Post Was Viewed", "rng-isuc");
+            }
+            ?>
+        </ul>
+        <?php
         $output .= ob_get_clean();
         $output .= $args["after_widget"];
         echo $output;
@@ -102,17 +89,11 @@ class uc_posts_viewed_widget extends WP_Widget {
         $post_types = (!empty($instance['post_types']) and isset($instance['post_types'])) ? $instance['post_types'] : array('post');
         $posts_count = (!empty($instance['posts_count'])) ? $instance['posts_count'] : 4;
         $style = (!empty($instance['style'])) ? $instance['style'] : 0;
-        $active_post_type = get_option("uc_settings");
-        if ($active_post_type == FALSE) {
-            $active_post_type = array("post");
-        } else {
-            $active_post_type = $active_post_type['legal_pt'];
-        }
-        $uc_settings = get_option("uc_settings");
-        $post_count = $uc_settings['post_count'];
-        if (empty($post_count)) {
-            $post_count = 10;
-        }
+
+        global $rnguc_settings;
+        $settings = $rnguc_settings->settings;
+        $active_post_type = $settings['legal_pt'];
+        $post_count = $settings['post_count'];
         ?>
         <p>
             <label><?php _e("Title", "rng-isuc"); ?></label>
