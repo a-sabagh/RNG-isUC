@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+?>
 <div id="uc-recent-postviewed" class="uc-sidenav">
     <h3 class="uc-sidenav-title">
         <?php esc_html_e("Recently Viewed", "rng-isuc"); ?>
@@ -15,7 +20,7 @@
                 while ($query->have_posts()):
                     $query->the_post();
                     $post_id = get_the_ID();
-                    
+
                     $post_thumbnail_id = get_post_thumbnail_id(get_the_ID());
                     $thumbnail_alt = get_post_meta($post_thumbnail_id, '_wp_attachment_image_alt', TRUE);
                     $thumbnail_url = wp_get_attachment_image_src($post_thumbnail_id, 'thumbnail', FALSE);

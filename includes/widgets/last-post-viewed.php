@@ -1,6 +1,8 @@
 <?php
 
-class uc_posts_viewed_widget extends WP_Widget {
+defined('ABSPATH') || exit;
+
+class rnguc_posts_viewed_widget extends WP_Widget {
 
     public function __construct() {
         $widget_options = array(
@@ -145,16 +147,16 @@ class uc_posts_viewed_widget extends WP_Widget {
 /**
  * register widget main function
  */
-function register_uc_posts_viewed_widget() {
-    register_widget("uc_posts_viewed_widget");
+function register_rnguc_posts_viewed_widget() {
+    register_widget("rnguc_posts_viewed_widget");
 }
 
-add_action("widgets_init", "register_uc_posts_viewed_widget");
+add_action("widgets_init", "register_rnguc_posts_viewed_widget");
 /*
 *Constants*
 1.*uc-post-viewed
 2.*WIDGET_DESCRIPTION
-3.uc_posts_viewed_widget
+3.rnguc_posts_viewed_widget
 4.WIDGET_TITLE
 5.OUTPUT_CONTENT
 6.WIDGET_ID
