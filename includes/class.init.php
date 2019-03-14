@@ -1,7 +1,5 @@
 <?php
 
-namespace rng\isuc;
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
@@ -14,9 +12,9 @@ class init {
     public function __construct($version, $slug) {
         $this->version = $version;
         $this->slug = $slug;
+        $this->load_modules();
         add_action('plugins_loaded', array($this, 'add_text_domain'));
         add_action('wp_enqueue_scripts', array($this, 'public_enqueue_scripts'));
-        $this->load_modules();
     }
 
     /**
@@ -28,9 +26,7 @@ class init {
 
     public function public_enqueue_scripts() {
         wp_enqueue_style("uc-last-post-viewed", UC_PDU . "assets/css/style.css");
-        if(isuc::check_sidenav_postviewed()){
-            wp_enqueue_script("uc-last-post-viewed-sidenav", UC_PDU . "assets/js/script.js", array('jquery'), $this->version, TRUE);
-        }
+        wp_register_script("uc-last-post-viewed-sidenav", UC_PDU . "assets/js/script.js", array('jquery'), $this->version, TRUE);
     }
 
     /**

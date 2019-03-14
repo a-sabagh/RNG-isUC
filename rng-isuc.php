@@ -10,7 +10,6 @@
   Text Domain: rng-isuc
  */
 
-namespace rng\isuc;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -31,7 +30,7 @@ define(PLUGIN_PATH, plugin_dir_path(__FILE__));
  */
 if (!function_exists("uc_locate_template")) {
 
-function custom_locate_template($template_name, $template_path, $default_template) {
+function uc_locate_template($template_name, $template_path, $default_template) {
     if (!$template_path)
         $template_path = "pluginsName/";
     if (!$default_path)
@@ -50,10 +49,10 @@ function custom_locate_template($template_name, $template_path, $default_templat
  */
 if (!function_exists("uc_get_template")) {
 
-function custom_get_template($template_name, $args = "", $template_path = "", $default_path = "") {
+function uc_get_template($template_name, $args = "", $template_path = "", $default_path = "") {
     if (is_array($args) and isset($args))
         extract($args);
-    $template_file = custom_locate_template($template_name, $template_path, $default_path);
+    $template_file = uc_locate_template($template_name, $template_path, $default_path);
     if (!file_exists($template_file)):
         error_log("File with name of {$template_file} is not exist");
         return;

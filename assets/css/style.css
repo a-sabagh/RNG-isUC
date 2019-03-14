@@ -1,4 +1,7 @@
 /***************  P O S T V L I S T S **************/
+.uc-post-viewed.ja-pp-style-1 {
+    margin-bottom: 20px;
+}
 .uc-post-viewed.ja-pp-style-1 li {
     display: block;
     overflow: hidden;
@@ -30,11 +33,13 @@ body.rtl .uc-post-viewed.ja-pp-style-1 .papular-posts-widg-thumbnail {
 }
 
 .uc-post-viewed-title-wrapper {
-    width: 75%;
+    width: 70%;
 }
 
 .uc-post-viewed-thumb-wrapper {
-    width: 85px;
+    width: 25%;
+    max-width: 85px;
+    margin-left: 5%;
 }
 
 .uc-post-viewed.ja-pp-style-1 li {
@@ -175,12 +180,12 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a {
 .uc-sidenav {
     position: fixed;
     top: 0;
+    bottom: 0;
     overflow: hidden;
     overflow-y: auto;
     z-index: 9998;
     max-width: 80%;
-    padding: 70px 50px;
-    height: 100%;
+    padding: 30px 40px 0;
     right: -100%;
     transition: all 1s;
     min-width: 200px;
@@ -197,6 +202,7 @@ body.rtl .uc-post-viewed.ja-pp-style-1 li a {
 
 .uc-open-sidenav span {
     display: block;
+    margin: 0 auto 10px;
 }
 
 .uc-sidenav {
@@ -276,7 +282,13 @@ body.rtl .uc-close-sidenav {
     float: left;
 }
 
+body.rtl .uc-post-viewed-thumb-wrapper {
+    margin-right: 0;
+    margin-left: 5%;
+}
+
 .uc-sidenav-title {
     display: inline-block;
     font-weight: bold;
+    margin: 0 auto 10px;
 }

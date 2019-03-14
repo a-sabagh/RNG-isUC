@@ -1,6 +1,5 @@
 <?php
 
-namespace rng\isuc;
 
 if (!defined('ABSPATH')) {
     exit;
