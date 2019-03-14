@@ -22,6 +22,10 @@ class rnguc_settings {
         }
     }
 
+    /**
+     * get plugin settings
+     * @return array
+     */
     public function get_uc_settings() {
         $uc_settings_array = array(
             'legal_pt' => array('post'),
@@ -42,14 +46,24 @@ class rnguc_settings {
         return $uc_settings_array;
     }
 
+    /**
+     * add last post viewed setting menu under the settings menu
+     */
     public function admin_menu() {
         add_submenu_page("options-general.php", __("Last post viewed", "rng-isuc"), __("isUc", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
     }
 
+    /**
+     * return setting panel . 
+     * it callback for add_submenu_page
+     */
     public function isuc_settings() {
         include RNGUC_ADM . "settings-panel.php";
     }
 
+    /**
+     * register general setting
+     */
     public function general_settings_init() {
         register_setting("uc-settings", "isuc_settings");
         add_settings_section("uc-settings-top", __("General settings", "rng-isuc"), array($this, "general_settings"), "uc-settings");
@@ -59,10 +73,18 @@ class rnguc_settings {
         add_settings_field("uc-settings-post-count", __("Post Count", "rng-isuc"), array($this, "general_settings_post_count"), "uc-settings", "uc-settings-top", array("id" => "uc-post-count", "name" => "post_count"));
     }
 
+    /**
+     * general setting top section description
+     */
     public function general_settings() {
         _e("General Settings of rng-isuc WP Plugin. At The First Please select Post types.", "rng-isuc");
     }
 
+    /**
+     * register flag setting
+     * callback for add_settings_field
+     * @param Array $args
+     */
     public function general_settings_flag($args) {
         $flag = $this->settings['flag'];
         ?>
@@ -73,6 +95,11 @@ class rnguc_settings {
         <?php
     }
 
+    /**
+     * register legal post types setting
+     * callback for add_settings_field
+     * @param Array $args
+     */
     public function general_settings_legal_pt($args) {
         $active_post_type = get_option("isuc_settings");
         if ($active_post_type == FALSE) {
@@ -97,6 +124,11 @@ class rnguc_settings {
         endforeach;
     }
 
+    /**
+     * register side nav setting switch
+     * callback for add_settings_field
+     * @param Array $args
+     */
     public function general_settings_side_nav($args) {
         $flag = $this->settings['side_nav'];
         ?>
@@ -107,6 +139,11 @@ class rnguc_settings {
         <?php
     }
 
+    /**
+     * register post count setting
+     * callback for add_settings_field
+     * @param Array $args
+     */
     public function general_settings_post_count($args) {
         $post_count = $this->settings['post_count'];
         ?>
@@ -114,6 +151,9 @@ class rnguc_settings {
         <?php
     }
 
+    /**
+     * add notice for configuration in admin panel after installing plugin
+     */
     public function configure_notices() {
         $dismiss = get_option("isuc_configration_dissmiss");
         if (!$dismiss) {
@@ -122,6 +162,9 @@ class rnguc_settings {
         }
     }
 
+    /**
+     * dismiss configuration notices
+     */
     public function dismiss_configuration() {
         if (isset($_GET['uc_dismiss_notice']) and $_GET['uc_dismiss_notice'] = 'true' and ( isset($_GET['uc_nonce']))) {
             $verify_nonce = wp_verify_nonce($_GET['uc_nonce'], 'uc_dismiss_nonce');
@@ -133,6 +176,11 @@ class rnguc_settings {
         }
     }
 
+    /**
+     * add setting link for my plugin in plugin list screen
+     * @param Array $links
+     * @return Array
+     */
     public function add_setting_link($links) {
         $mylinks = array(
             '<a href="' . admin_url('options-general.php?page=isuc-settings') . '">' . __("Settings", "rng-isuc") . '</a>',

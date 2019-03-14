@@ -6,7 +6,16 @@ if (!defined('ABSPATH')) {
 
 class init {
 
+    /**
+     * plugin version
+     * @var Integer
+     */
     public $version;
+
+    /**
+     * plugin slug
+     * @var String
+     */
     public $slug;
 
     public function __construct($version, $slug) {
@@ -19,18 +28,23 @@ class init {
 
     /**
      * add text domain for translate files
+     * require general string for translate
      */
     public function add_text_domain() {
         load_plugin_textdomain($this->slug, FALSE, RNGUC_PRT . "/languages");
+        require_once trailingslashit(__DIR__) . "translate.php";
     }
 
+    /**
+     * register plugin scripts
+     */
     public function public_enqueue_scripts() {
         wp_enqueue_style("uc-last-post-viewed", RNGUC_PDU . "assets/css/style.css");
         wp_register_script("uc-last-post-viewed-sidenav", RNGUC_PDU . "assets/js/script.js", array('jquery'), $this->version, TRUE);
     }
 
     /**
-     * load modules
+     * load plugin modules
      */
     public function load_modules() {
         require_once 'class.controller.settings.php';

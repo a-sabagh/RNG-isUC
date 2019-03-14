@@ -1,10 +1,10 @@
 <?php
 
 /*
-  Plugin Name: RNG_isUc
-  Description: wordpress plugin for showing last post views
+  Plugin Name: rng-last-post-viewed
+  Description: wordpress Plugin that shows last post viewed by user in several viewes like widget, shortcode and sidebar navigation
   Version: 1.0
-  Author: abolfazl sabagh
+  Author: Abolfazl Sabagh
   Author URI: http://asabagh.ir
   License: GPLv2 or later
   Text Domain: rng-isuc
@@ -26,11 +26,16 @@ define(RNGUC_ADM, RNGUC_PDP . "/admin/");      //view OR templates directory for
 
 
 define(RNGUC_PLUGIN_PATH, plugin_dir_path(__FILE__));
-/*
- * locate_template
- */
+
 if (!function_exists("rnguc_locate_template")) {
 
+    /**
+     * locate template file
+     * @param String $template_name
+     * @param String $template_path
+     * @param String $default_template
+     * @return String
+     */
     function rnguc_locate_template($template_name, $template_path, $default_template) {
         if (!$template_path) {
             $template_path = "pluginsName/";
@@ -48,11 +53,16 @@ if (!function_exists("rnguc_locate_template")) {
 }
 
 
-/*
- * get_template
- */
 if (!function_exists("rnguc_get_template")) {
-
+    /**
+     * require template file with this periority :
+     * 1.in active theme templates
+     * 2.in current plugin
+     * @param String $template_name
+     * @param Array $args
+     * @param String $template_path
+     * @param String $default_path
+     */
     function rnguc_get_template($template_name, $args = "", $template_path = "", $default_path = "") {
         if (is_array($args) and isset($args)) {
             extract($args);
