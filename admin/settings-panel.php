@@ -5,9 +5,9 @@ if (!defined('ABSPATH')) {
 if (!current_user_can("manage_options"))
     return;
 if (isset($_GET['settings-updated']) and $_GET['settings-updated'] == TRUE) {
-    add_settings_error("isuc-settings", "isuc-settings", __("Settings Updated", "rng-isuc"), "updated");
+    add_settings_error("isuc-settings", "isuc-settings", esc_html__("Settings Updated", "rng-isuc"), "updated");
 } elseif (isset($_GET['settings-updated']) and $_GET['settings-updated'] == FALSE) {
-    add_settings_error("isuc-settings", "isuc-settings", __("Error with Updating", "rng-isuc"));
+    add_settings_error("isuc-settings", "isuc-settings", esc_html__("Error with Updating", "rng-isuc"));
 }
 ?>
 <div class="wrap">
@@ -16,7 +16,7 @@ if (isset($_GET['settings-updated']) and $_GET['settings-updated'] == TRUE) {
         <?php
         settings_fields("isuc-settings");
         do_settings_sections("isuc-settings");
-        submit_button(__("save", "rng-isuc"));
+        submit_button(esc_html__("save", "rng-isuc"));
         ?>
     </form>
 </div>

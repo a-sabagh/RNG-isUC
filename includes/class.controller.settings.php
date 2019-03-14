@@ -49,7 +49,7 @@ class rnguc_settings {
      * add last post viewed setting menu under the settings menu
      */
     public function admin_menu() {
-        add_submenu_page("options-general.php", __("Last post viewed", "rng-isuc"), __("isUc", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
+        add_submenu_page("options-general.php", esc_html__("Last post viewed", "rng-isuc"), esc_html__("isUc", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
     }
 
     /**
@@ -65,11 +65,11 @@ class rnguc_settings {
      */
     public function general_settings_init() {
         register_setting("uc-settings", "isuc_settings");
-        add_settings_section("uc-settings-top", __("General settings", "rng-isuc"), array($this, "general_settings"), "uc-settings");
-        add_settings_field("uc-pv-cookie", __("Set user post viewed", "rng-isuc"), array($this, "general_settings_flag"), "uc-settings", "uc-settings-top", array('id' => 'uc-flag', 'name' => 'flag'));
-        add_settings_field("uc-settings-side-view", __("Show Side Nav post viewed", "rng-isuc"), array($this, "general_settings_side_nav"), "uc-settings", "uc-settings-top", array("id" => "uc-side-nav", "name" => "side_nav"));
-        add_settings_field("uc-settings-legal-pt", __("Permission", "rng-isuc"), array($this, "general_settings_legal_pt"), "uc-settings", "uc-settings-top", array("id" => "uc-legal-pt", "name" => "legal_pt"));
-        add_settings_field("uc-settings-post-count", __("Post Count", "rng-isuc"), array($this, "general_settings_post_count"), "uc-settings", "uc-settings-top", array("id" => "uc-post-count", "name" => "post_count"));
+        add_settings_section("uc-settings-top", esc_html__("General settings", "rng-isuc"), array($this, "general_settings"), "uc-settings");
+        add_settings_field("uc-pv-cookie", esc_html__("Set user post viewed", "rng-isuc"), array($this, "general_settings_flag"), "uc-settings", "uc-settings-top", array('id' => 'uc-flag', 'name' => 'flag'));
+        add_settings_field("uc-settings-side-view", esc_html__("Show Side Nav post viewed", "rng-isuc"), array($this, "general_settings_side_nav"), "uc-settings", "uc-settings-top", array("id" => "uc-side-nav", "name" => "side_nav"));
+        add_settings_field("uc-settings-legal-pt", esc_html__("Permission", "rng-isuc"), array($this, "general_settings_legal_pt"), "uc-settings", "uc-settings-top", array("id" => "uc-legal-pt", "name" => "legal_pt"));
+        add_settings_field("uc-settings-post-count", esc_html__("Post Count", "rng-isuc"), array($this, "general_settings_post_count"), "uc-settings", "uc-settings-top", array("id" => "uc-post-count", "name" => "post_count"));
     }
 
     /**
@@ -156,7 +156,7 @@ class rnguc_settings {
     public function configure_notices() {
         $dismiss = get_option("isuc_configration_dissmiss");
         if (!$dismiss) {
-            $notice = '<div class="updated"><p>' . __('RNG_isUc is activated, you may need to configure it to work properly.', 'rng-isuc') . ' <a href="' . admin_url('admin.php?page=isuc-settings') . '">' . __('Go to Settings page', 'rng-isuc') . '</a> &ndash; <a href="' . add_query_arg(array('uc_dismiss_notice' => 'true', 'uc_nonce' => wp_create_nonce("uc_dismiss_nonce"))) . '">' . __('Dismiss', 'rng-isuc') . '</a></p></div>';
+            $notice = '<div class="updated"><p>' . esc_html__('RNG_isUc is activated, you may need to configure it to work properly.', 'rng-isuc') . ' <a href="' . admin_url('admin.php?page=isuc-settings') . '">' . esc_html__('Go to Settings page', 'rng-isuc') . '</a> &ndash; <a href="' . add_query_arg(array('uc_dismiss_notice' => 'true', 'uc_nonce' => wp_create_nonce("uc_dismiss_nonce"))) . '">' . esc_html__('Dismiss', 'rng-isuc') . '</a></p></div>';
             echo $notice;
         }
     }
@@ -182,7 +182,7 @@ class rnguc_settings {
      */
     public function add_setting_link($links) {
         $mylinks = array(
-            '<a href="' . admin_url('options-general.php?page=isuc-settings') . '">' . __("Settings", "rng-isuc") . '</a>',
+            '<a href="' . admin_url('options-general.php?page=isuc-settings') . '">' . esc_html__("Settings", "rng-isuc") . '</a>',
         );
         return array_merge($links, $mylinks);
     }

@@ -7,9 +7,9 @@ class rnguc_posts_viewed_widget extends WP_Widget {
     public function __construct() {
         $widget_options = array(
             'classname' => 'uc-post-viewed',
-            'description' => __("Show last post viewed by user", "rng-isuc")
+            'description' => esc_html__("Show last post viewed by user", "rng-isuc")
         );
-        parent::__construct("uc-post-viewed", __("Last PostViewed", "rng-isuc"), $widget_options);
+        parent::__construct("uc-post-viewed", esc_html__("Last PostViewed", "rng-isuc"), $widget_options);
     }
 
     /**
@@ -87,7 +87,7 @@ class rnguc_posts_viewed_widget extends WP_Widget {
         //$instance = get value from admin panel fields
         //$this->get_field_id('FIELDNAME') = avoid id conflict
         //$this->get_field_name('FIELDNAME') = avoid name conflict
-        $title = (!empty($instance['title'])) ? $instance['title'] : __("Last post viewed", "rng-isuc");
+        $title = (!empty($instance['title'])) ? $instance['title'] : esc_html__("Last post viewed", "rng-isuc");
         $post_types = (!empty($instance['post_types']) and isset($instance['post_types'])) ? $instance['post_types'] : array('post');
         $posts_count = (!empty($instance['posts_count'])) ? $instance['posts_count'] : 4;
         $style = (!empty($instance['style'])) ? $instance['style'] : 0;
