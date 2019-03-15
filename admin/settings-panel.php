@@ -2,8 +2,10 @@
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
-if (!current_user_can("manage_options"))
+if (!current_user_can("manage_options")){
     return;
+}
+    
 if (isset($_GET['settings-updated']) and $_GET['settings-updated'] == TRUE) {
     add_settings_error("isuc-settings", "isuc-settings", esc_html__("Settings Updated", "rng-isuc"), "updated");
 } elseif (isset($_GET['settings-updated']) and $_GET['settings-updated'] == FALSE) {

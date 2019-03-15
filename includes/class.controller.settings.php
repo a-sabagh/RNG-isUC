@@ -64,12 +64,12 @@ class rnguc_settings {
      * register general setting
      */
     public function general_settings_init() {
-        register_setting("uc-settings", "isuc_settings");
-        add_settings_section("uc-settings-top", esc_html__("General settings", "rng-isuc"), array($this, "general_settings"), "uc-settings");
-        add_settings_field("uc-pv-cookie", esc_html__("Set user post viewed", "rng-isuc"), array($this, "general_settings_flag"), "uc-settings", "uc-settings-top", array('id' => 'uc-flag', 'name' => 'flag'));
-        add_settings_field("uc-settings-side-view", esc_html__("Show Side Nav post viewed", "rng-isuc"), array($this, "general_settings_side_nav"), "uc-settings", "uc-settings-top", array("id" => "uc-side-nav", "name" => "side_nav"));
-        add_settings_field("uc-settings-legal-pt", esc_html__("Permission", "rng-isuc"), array($this, "general_settings_legal_pt"), "uc-settings", "uc-settings-top", array("id" => "uc-legal-pt", "name" => "legal_pt"));
-        add_settings_field("uc-settings-post-count", esc_html__("Post Count", "rng-isuc"), array($this, "general_settings_post_count"), "uc-settings", "uc-settings-top", array("id" => "uc-post-count", "name" => "post_count"));
+        register_setting("isuc-settings", "isuc_settings");
+        add_settings_section("isuc-settings-top", esc_html__("General settings", "rng-isuc"), array($this, "general_settings"), "isuc-settings");
+        add_settings_field("uc-pv-cookie", esc_html__("Set user post viewed", "rng-isuc"), array($this, "general_settings_flag"), "isuc-settings", "isuc-settings-top", array('id' => 'uc-flag', 'name' => 'flag'));
+        add_settings_field("isuc-settings-side-view", esc_html__("Show Side Nav post viewed", "rng-isuc"), array($this, "general_settings_side_nav"), "isuc-settings", "isuc-settings-top", array("id" => "uc-side-nav", "name" => "side_nav"));
+        add_settings_field("isuc-settings-legal-pt", esc_html__("Permission", "rng-isuc"), array($this, "general_settings_legal_pt"), "isuc-settings", "isuc-settings-top", array("id" => "uc-legal-pt", "name" => "legal_pt"));
+        add_settings_field("isuc-settings-post-count", esc_html__("Post Count", "rng-isuc"), array($this, "general_settings_post_count"), "isuc-settings", "isuc-settings-top", array("id" => "uc-post-count", "name" => "post_count"));
     }
 
     /**
@@ -88,8 +88,8 @@ class rnguc_settings {
         $flag = $this->settings['flag'];
         ?>
         <select id='<?php echo $args['id']; ?>' name='isuc_settings[<?php echo $args['name']; ?>]'>
-            <option <?php echo ($flag == 'yes' or empty($flag)) ? "selected" : ""; ?> value='yes'><?php _e("Yes", "rng-isuc"); ?></option>
-            <option <?php echo ($flag == 'no') ? "selected" : ""; ?> value='no'><?php _e("No", "rng-isuc"); ?></option>
+            <option <?php echo ($flag) ? "selected" : ""; ?> value='yes'><?php _e("Yes", "rng-isuc"); ?></option>
+            <option <?php echo ($flag) ? "" : "selected"; ?> value='no'><?php _e("No", "rng-isuc"); ?></option>
         </select>
         <?php
     }
@@ -132,8 +132,8 @@ class rnguc_settings {
         $flag = $this->settings['side_nav'];
         ?>
         <select id='<?php echo $args['id']; ?>' name='isuc_settings[<?php echo $args['name']; ?>]'>
-            <option <?php echo ($flag == 'yes' or empty($flag)) ? "selected" : ""; ?> value='yes'><?php _e("Yes", "rng-isuc"); ?></option>
-            <option <?php echo ($flag == 'no') ? "selected" : ""; ?> value='no'><?php _e("No", "rng-isuc"); ?></option>
+            <option <?php echo ($flag) ? "selected" : ""; ?> value='yes'><?php _e("Yes", "rng-isuc"); ?></option>
+            <option <?php echo ($flag) ? "" : "selected"; ?> value='no'><?php _e("No", "rng-isuc"); ?></option>
         </select>
         <?php
     }
@@ -191,4 +191,3 @@ class rnguc_settings {
 
 global $rnguc_settings;
 $rnguc_settings = new rnguc_settings();
-

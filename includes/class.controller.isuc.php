@@ -11,7 +11,7 @@ class rnguc_isuc {
     public static $cookiename = 'uc_posts_viewed';
 
     /**
-     * Query that show last post viewed in several templateÏÏ
+     * Query that show last post viewed in several template
      * @var Array
      */
     private $query_args;
@@ -96,6 +96,9 @@ class rnguc_isuc {
      */
     public function get_postviewed_cookie() {
         $posts_viewed = $_COOKIE[self::$cookiename];
+        if (!isset($posts_viewed)) {
+            return array(0);
+        }
         $post_viewed_array = (array) unserialize($posts_viewed);
         $post_viewed_array_integer = array_map("intval", $post_viewed_array);
         $post_viewed_array_unique = array_unique($post_viewed_array_integer);
@@ -107,13 +110,10 @@ class rnguc_isuc {
      * @return Array
      */
     private function set_query_args() {
-        $posts_viewed = $this->get_postviewed_cookie();
-        if (empty($posts_viewed)) {
-            return array();
-        }
+        $posts_viewed = (array) $this->get_postviewed_cookie();
         $this->check_post_view_count($posts_viewed);
-        $posts_per_page = $this->get_post_view_count();
-        $legal_pt = $this->get_legal_post_type();
+        $posts_per_page = (int) min(count($posts_viewed), $this->get_post_view_count());
+        $legal_pt = (array) $this->get_legal_post_type();
         $query_args = array(
             'order' => 'DESC',
             'post__in' => $posts_viewed,
@@ -130,11 +130,9 @@ class rnguc_isuc {
     public function remove_sigular_id(&$posts_viewed) {
         $queried_object = get_queried_object();
         $current_id = (int) $queried_object->ID;
-
         if (!is_singular() or ! in_array($current_id, $posts_viewed)) {
             return;
         }
-
         $index = array_search($current_id, $posts_viewed);
         unset($posts_viewed[$index]);
     }
