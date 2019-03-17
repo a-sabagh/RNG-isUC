@@ -6,7 +6,7 @@ class rnguc_settings {
 
     /**
      * plugin general settings
-     * @var Array 
+     * @var Array
      */
     public $settings = array();
 
@@ -49,11 +49,11 @@ class rnguc_settings {
      * add last post viewed setting menu under the settings menu
      */
     public function admin_menu() {
-        add_submenu_page("options-general.php", esc_html__("Last post viewed", "rng-isuc"), esc_html__("isUc", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
+        add_submenu_page("options-general.php", esc_html__("Last post viewed", "rng-isuc"), esc_html__("Last posts viewed", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
     }
 
     /**
-     * return setting panel . 
+     * return setting panel .
      * it callback for add_submenu_page
      */
     public function isuc_settings() {
@@ -156,7 +156,7 @@ class rnguc_settings {
     public function configure_notices() {
         $dismiss = get_option("isuc_configration_dissmiss");
         if (!$dismiss) {
-            $notice = '<div class="updated"><p>' . esc_html__('RNG_isUc is activated, you may need to configure it to work properly.', 'rng-isuc') . ' <a href="' . admin_url('admin.php?page=isuc-settings') . '">' . esc_html__('Go to Settings page', 'rng-isuc') . '</a> &ndash; <a href="' . add_query_arg(array('uc_dismiss_notice' => 'true', 'uc_nonce' => wp_create_nonce("uc_dismiss_nonce"))) . '">' . esc_html__('Dismiss', 'rng-isuc') . '</a></p></div>';
+            $notice = '<div class="updated"><p>' . esc_html__('rng-isuc is activated, you may need to configure it to work properly.', 'rng-isuc') . ' <a href="' . admin_url('admin.php?page=isuc-settings') . '">' . esc_html__('Go to Settings page', 'rng-isuc') . '</a> &ndash; <a href="' . add_query_arg(array('uc_dismiss_notice' => 'true', 'uc_nonce' => wp_create_nonce("uc_dismiss_nonce"))) . '">' . esc_html__('Dismiss', 'rng-isuc') . '</a></p></div>';
             echo $notice;
         }
     }

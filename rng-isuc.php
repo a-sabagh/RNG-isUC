@@ -1,15 +1,13 @@
 <?php
 
 /*
-  Plugin Name: rng-last-post-viewed
-  Description: wordpress Plugin that shows last post viewed by user in several viewes like widget, shortcode and sidebar navigation
+  Plugin Name: rng-isuc
+  Description: WordPress Plugin that shows last post viewed by user in several viewes like widget, shortcode and sidebar navigation
   Version: 1.0
   Author: Abolfazl Sabagh
   Author URI: http://asabagh.ir
   License: GPLv2 or later
-  Text Domain: rng-isuc
  */
-
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -20,7 +18,7 @@ define(RNGUC_PRU, plugin_basename(__FILE__));
 define(RNGUC_PDU, plugin_dir_url(__FILE__));   //http://localhost:8888/rng-plugin/wp-content/plugins/rng-isuc
 define(RNGUC_PRT, basename(__DIR__));          //rng-isuc.php
 define(RNGUC_PDP, plugin_dir_path(__FILE__));  //Applications/MAMP/htdocs/rng-plugin/wp-content/plugins/rng-isuc
-define(RNGUC_TMP, RNGUC_PDP . "/public/");     //view OR templates directory for public 
+define(RNGUC_TMP, RNGUC_PDP . "/public/");     //view OR templates directory for public
 define(RNGUC_ADM, RNGUC_PDP . "/admin/");      //view OR templates directory for admin panel
 
 
@@ -38,7 +36,7 @@ if (!function_exists("rnguc_locate_template")) {
      */
     function rnguc_locate_template($template_name, $template_path, $default_template) {
         if (!$template_path) {
-            $template_path = "pluginsName/";
+            $template_path = "rng-isuc/";
         }
         if (!$default_path) {
             $default_path = RNGUC_PLUGIN_PATH . "templates/";
@@ -80,4 +78,3 @@ if (!function_exists("rnguc_get_template")) {
 
 require_once 'includes/class.init.php';
 new init(1.0, "rng-isuc");
-
