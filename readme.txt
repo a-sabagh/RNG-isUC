@@ -7,10 +7,10 @@ Stable tag: 4.1
 License: GPLv2 or later
 
 WordPress Plugin that shows the last post viewed by a user in several template views like widget, shortcode and sidebar navigation
-isuc is stands for is you see :)
+isuc is standing for is you see :)
 == Description ==
 
-WordPress Plugin that that shows the last post viewed by a user in several template views:
+WordPress Plugin that shows the last post viewed by a user in several template views:
 1. WordPress widget
 2. Shortcode `[isuc_posts_viewed]`
 3. Simple navigation
@@ -27,9 +27,9 @@ Main features in rng-isuc include:
 *    Has shortcode to showing the last posts viewed `[isuc_posts_viewed]`
 *    Has beautiful navigation that shows last posts viewed
 *    This plugin avoids from any conflict with other plugins
-*    has not any overhead
+*    Has not any overhead
 
-it is strongly was recommended that after the plugin is activated, go to the `Settings > Last post viewed` and configure plugin.
+it is strongly was recommended that after the plugin is activated, go to the `Settings > Last post viewed` and configure the plugin.
 
 == Installation ==
 
