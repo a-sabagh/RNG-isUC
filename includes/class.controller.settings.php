@@ -108,6 +108,8 @@ class rnguc_settings {
         }
         $pt_args = array('public' => TRUE);
         $post_types = get_post_types($pt_args, 'names');
+        $key = array_search("attachment", $post_types);
+        unset($post_types[$key]);
         foreach ($post_types as $post_type):
             if (is_array($active_post_type)) {
                 $checked = (in_array($post_type, $active_post_type)) ? "checked" : "";
@@ -156,7 +158,7 @@ class rnguc_settings {
     public function configure_notices() {
         $dismiss = get_option("isuc_configration_dissmiss");
         if (!$dismiss) {
-            $notice = '<div class="updated"><p>' . esc_html__('rng-isuc is activated, you may need to configure it to work properly.', 'rng-isuc') . ' <a href="' . admin_url('admin.php?page=isuc-settings') . '">' . esc_html__('Go to Settings page', 'rng-isuc') . '</a> &ndash; <a href="' . add_query_arg(array('uc_dismiss_notice' => 'true', 'uc_nonce' => wp_create_nonce("uc_dismiss_nonce"))) . '">' . esc_html__('Dismiss', 'rng-isuc') . '</a></p></div>';
+            $notice = '<div class="updated"><p>' . esc_html__('rng-isuc is activated, you may need to configure it to work properly.', 'rng-isuc') . ' <a href="' . admin_url('options-general.php?page=isuc-settings') . '">' . esc_html__('Go to Settings page', 'rng-isuc') . '</a> &ndash; <a href="' . add_query_arg(array('uc_dismiss_notice' => 'true', 'uc_nonce' => wp_create_nonce("uc_dismiss_nonce"))) . '">' . esc_html__('Dismiss', 'rng-isuc') . '</a></p></div>';
             echo $notice;
         }
     }

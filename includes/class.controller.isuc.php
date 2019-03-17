@@ -144,13 +144,12 @@ class rnguc_isuc {
         ob_start();
         wp_enqueue_script("uc-last-post-viewed-sidenav");
         $query_args = $this->get_query_args();
-        if (empty($query_args)) {
-            $params = array('query_args' => array(), 'has_posts' => FALSE);
-            rnguc_get_template("sidenav-postviewed.php", $params);
-        } else {
-            $params = array('query_args' => $query_args, 'has_posts' => TRUE);
-            rnguc_get_template("sidenav-postviewed.php", $params);
+        $params = array('query_args' => array(), 'has_posts' => FALSE);
+        if (current($query_args['post__in']) !== 0) {
+            $params['query_args'] = $query_args;
+            $params['has_posts'] = TRUE;
         }
+        rnguc_get_template("sidenav-postviewed.php", $params);
         $output = ob_get_clean();
         echo $output;
     }
