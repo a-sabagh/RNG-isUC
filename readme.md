@@ -1,6 +1,6 @@
 # rng-isuc
 Contributors: asabagh
-Tags: rng, post viewed, recent post viewed
+Tags: rng, a post viewed, a recent post viewed
 Requires at least: 4.0
 Tested up to: 5.1
 Stable tag: 4.1
@@ -10,7 +10,7 @@ WordPress Plugin that shows the last post viewed by a user in several template v
 
 # Description
 
-WordPress Plugin that that shows the last post viewed by a user in several template views:
+WordPress Plugin that  shows the last post viewed by a user in several template views:
 1. WordPress widget
 2. Shortcode `[isuc_posts_viewed]`
 3. Simple navigation
