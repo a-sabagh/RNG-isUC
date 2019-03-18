@@ -27,7 +27,7 @@ Main features in rng-isuc include:
 *    Has shortcode to showing the last posts viewed `[isuc_posts_viewed]`
 *    Has beautiful navigation that shows last posts viewed
 *    This plugin avoids from any conflict with other plugins
-*    has not any overhead
+*    Has not any overhead
 
 it is strongly was recommended that after the plugin is activated, go to the `Settings > Last post viewed` and configure plugin.
 
