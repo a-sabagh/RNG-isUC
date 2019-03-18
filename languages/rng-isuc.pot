@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-03-17 10:19+0330\n"
+"POT-Creation-Date: 2019-03-18 10:50+0430\n"
 "PO-Revision-Date: 2019-03-16 22:03+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
@@ -26,11 +26,6 @@ msgstr ""
 
 #: admin/settings-panel.php:21
 msgid "save"
-msgstr ""
-
-#: includes/class.controller.settings.php:52
-#: includes/widgets/last-post-viewed.php:90
-msgid "Last post viewed"
 msgstr ""
 
 #: includes/class.controller.settings.php:52
@@ -64,28 +59,28 @@ msgid ""
 msgstr ""
 
 #: includes/class.controller.settings.php:91
-#: includes/class.controller.settings.php:135
+#: includes/class.controller.settings.php:137
 msgid "Yes"
 msgstr ""
 
 #: includes/class.controller.settings.php:92
-#: includes/class.controller.settings.php:136
+#: includes/class.controller.settings.php:138
 msgid "No"
 msgstr ""
 
-#: includes/class.controller.settings.php:159
+#: includes/class.controller.settings.php:161
 msgid "rng-isuc is activated, you may need to configure it to work properly."
 msgstr ""
 
-#: includes/class.controller.settings.php:159
+#: includes/class.controller.settings.php:161
 msgid "Go to Settings page"
 msgstr ""
 
-#: includes/class.controller.settings.php:159
+#: includes/class.controller.settings.php:161
 msgid "Dismiss"
 msgstr ""
 
-#: includes/class.controller.settings.php:185
+#: includes/class.controller.settings.php:187
 msgid "Settings"
 msgstr ""
 
@@ -117,6 +112,10 @@ msgstr ""
 
 #: includes/widgets/last-post-viewed.php:73 templates/sidenav-postviewed.php:61
 msgid "No Post Was Viewed"
+msgstr ""
+
+#: includes/widgets/last-post-viewed.php:90
+msgid "Last post viewed"
 msgstr ""
 
 #: includes/widgets/last-post-viewed.php:101

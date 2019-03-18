@@ -49,7 +49,7 @@ class rnguc_settings {
      * add last post viewed setting menu under the settings menu
      */
     public function admin_menu() {
-        add_submenu_page("options-general.php", esc_html__("Last post viewed", "rng-isuc"), esc_html__("Last posts viewed", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
+        add_submenu_page("options-general.php", esc_html__("Last posts viewed", "rng-isuc"), esc_html__("Last posts viewed", "rng-isuc"), "administrator", "isuc-settings", array($this, "isuc_settings"));
     }
 
     /**

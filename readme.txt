@@ -31,6 +31,16 @@ Main features in rng-isuc include:
 
 it is strongly was recommended that after the plugin is activated, go to the `Settings > Last post viewed` and configure the plugin.
 
+== Screenshots ==
+
+1. Settings panel
+2. Widget with style-1
+3. Widget in admin screen
+4. Side navigation close
+5. Side navigation empty
+6. Side navigation with post
+7. Shortcode that show last posts viewed
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/rng-isuc` directory, or install the plugin through the WordPress plugins screen directly.
