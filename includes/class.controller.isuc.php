@@ -95,7 +95,7 @@ class rnguc_isuc {
      * @return Array
      */
     public function get_postviewed_cookie() {
-        $posts_viewed = $_COOKIE[self::$cookiename];
+        $posts_viewed = (isset($_COOKIE[self::$cookiename]))? $_COOKIE[self::$cookiename] : false;
         if (!isset($posts_viewed)) {
             return array(0);
         }
@@ -129,8 +129,8 @@ class rnguc_isuc {
      */
     public function remove_sigular_id(&$posts_viewed) {
         $queried_object = get_queried_object();
-        $current_id = (int) $queried_object->ID;
-        if (!is_singular() or ! in_array($current_id, $posts_viewed)) {
+        $current_id = (isset($queried_object))? intval($queried_object->ID) : 0;
+        if (!is_singular() or ! in_array($queried_object->ID, $posts_viewed)) {
             return;
         }
         $index = array_search($current_id, $posts_viewed);
